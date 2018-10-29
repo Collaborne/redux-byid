@@ -8,6 +8,47 @@ A helper for redux that allows to distribute an action to one specific part of a
 npm install --save redux-byid
 ```
 
+You can then define a "by-id" state:
+```js
+const { byId } = require('redux-byid');
+
+/**
+ * Reducer for a single item
+ */
+function itemReducer(state, action) {
+    switch (action.type) {
+        case 'item/added':
+            return {id: action.id, data: action.data};
+        case 'item/updated':
+            return {id: action.id, data: action.updated};
+        case 'item/deleted':
+            // Item is deleted, return undefined. byId will drop out the state.
+            return undefined;
+        default:
+            return state;
+    }
+}
+
+/**
+ * Extract the item id for this reducer
+ */
+function extractId(action) {
+    const isActionForItem = action.type.startsWith('item/');
+    if (!isActionForItem) {
+        // Not relevant, return an empty id.
+        // The itemReducer will not be invoked.
+        return '';
+    }
+
+    return action.id;
+}
+
+/**
+ * Actual reducer, produces a map of item id -> item reducer.
+ */
+const reducer = byId(extractId, itemReducer);
+```
+
 ## License
 
     This software is licensed under the Apache 2 license, quoted below.
