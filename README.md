@@ -1,4 +1,4 @@
-# redux-byid
+# redux-byid [![Build Status](https://travis-ci.org/Collaborne/redux-byid.svg?branch=master)](https://travis-ci.org/Collaborne/redux-byid)
 
 A helper for redux that allows to distribute an action to one specific part of a map of similar "things".
 
