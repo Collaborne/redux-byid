@@ -1,0 +1,10 @@
+/node_modules/
+/dist/
+
+npm-shrinkwrap.json
+package-lock.json
+yarn.lock
+
+*.rej
+*.orig
+*.porig
