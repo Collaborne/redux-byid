@@ -9,6 +9,11 @@ cache:
   - node_modules
 before_install:
 - if [ -d node_modules ] && [ x$(cat node_modules/.last-node-version 2>/dev/null) != x$(node -e 'console.log(process.version)') ]; then npm rebuild --update-binary && node -e 'console.log(process.version)' > node_modules/.last-node-version; fi
+before_script:
+- npm run build
+script:
+- npm run lint
+- npm test
 deploy:
   provider: npm
   email: npm@collaborne.com
