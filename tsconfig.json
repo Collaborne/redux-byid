@@ -15,8 +15,9 @@
 		"resolveJsonModule": true,
 		"sourceMap": true,
 		"strict": true,
+		"strictNullChecks": true,
 		"target": "es5",
 
-		"outDir": "dist",
+		"outDir": "dist"
 	}
 }
