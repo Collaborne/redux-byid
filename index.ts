@@ -5,8 +5,9 @@ export interface State<T> {
 }
 
 export type ItemReducer<T> = (state: T | undefined, action: AnyAction, id: string) => T | undefined;
+export type GetId = (action: AnyAction) => string | undefined;
 
-export function byId<T>(getId: (action: AnyAction) => string, itemReducer: ItemReducer<T>) {
+export function byId<T>(getId: GetId, itemReducer: ItemReducer<T>) {
 	return function reducer(state: State<T> = {}, action: AnyAction) {
 		const id = getId(action);
 		if (id) {

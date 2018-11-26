@@ -35,9 +35,9 @@ function itemReducer(state, action) {
 function extractId(action) {
     const isActionForItem = action.type.startsWith('item/');
     if (!isActionForItem) {
-        // Not relevant, return an empty id.
+        // Not relevant, return undefined (alternatively an empty id)
         // The itemReducer will not be invoked.
-        return '';
+        return undefined;
     }
 
     return action.id;
