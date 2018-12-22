@@ -17,7 +17,7 @@ export function byId<T>(getId: GetId, itemReducer: ItemReducer<T>) {
 					[id]: newItemState,
 				});
 			} else {
-				const {id: itemState, ...stateWithoutItemState} = state;
+				const {[id]: itemState, ...stateWithoutItemState} = state;
 				return stateWithoutItemState;
 			}
 		}
