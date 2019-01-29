@@ -1,6 +1,6 @@
 {
   "name": "redux-byid",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Redux helper to define a \"by-id\" map",
   "main": "dist/index.js",
   "scripts": {
