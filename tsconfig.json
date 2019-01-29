@@ -1,23 +1,6 @@
 {
+	"extends": "tsconfig-collaborne",
 	"compilerOptions": {
-		"allowSyntheticDefaultImports": true,
-		"lib": ["es5", "es6", "es2015", "es2016"],
-		"module": "commonjs",
-		"moduleResolution": "node",
-		"esModuleInterop": true,
-		"noImplicitAny": true,
-		"noImplicitThis": true,
-		"noUnusedLocals": true,
-		"noImplicitReturns": true,
-		"noFallthroughCasesInSwitch": true,
-		"forceConsistentCasingInFileNames": true,
-		"preserveSymlinks": true,
-		"resolveJsonModule": true,
-		"sourceMap": true,
-		"strict": true,
-		"strictNullChecks": true,
-		"target": "es5",
-
 		"outDir": "dist"
 	}
 }
