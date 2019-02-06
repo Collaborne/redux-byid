@@ -1,5 +1,6 @@
 /node_modules/
 /dist/
+/dist.es6/
 
 npm-shrinkwrap.json
 package-lock.json

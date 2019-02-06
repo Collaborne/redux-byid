@@ -1,5 +1,5 @@
 {
-	"extends": "tsconfig-collaborne",
+	"extends": "./tsconfig.base.json",
 	"compilerOptions": {
 		"outDir": "dist"
 	}
