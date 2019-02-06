@@ -38,5 +38,12 @@
   },
   "peerDependencies": {
     "redux": "^4.0.1"
-  }
+  },
+  "files": [
+    "index.ts",
+    "tslint.json",
+    "tsconfig*.json",
+    "dist",
+    "dist.es6"
+  ]
 }
