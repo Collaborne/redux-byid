@@ -6,7 +6,7 @@
   "module": "dist.es6/index.js",
   "scripts": {
     "build": "tsc && tsc -p tsconfig.es6.json",
-    "lint": "tslint -c tslint.json *.ts",
+    "lint": "tslint -p . -c tslint.json *.ts",
     "test": "TS_NODE_FILES=true mocha --recursive -r ts-node/register \"test/**/*.spec.ts\""
   },
   "repository": {
