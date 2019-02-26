@@ -5,11 +5,11 @@ export interface State<T> {
 }
 
 export type ItemReducer<T> = (state: T | undefined, action: AnyAction, id: string) => T | undefined;
-export type GetId = (action: AnyAction) => string | undefined;
+export type GetId<T> = (action: AnyAction, state: State<T>) => string | undefined;
 
-export function byId<T>(getId: GetId, itemReducer: ItemReducer<T>) {
+export function byId<T>(getId: GetId<T>, itemReducer: ItemReducer<T>) {
 	return function reducer(state: State<T> = {}, action: AnyAction) {
-		const id = getId(action);
+		const id = getId(action, state);
 		if (id) {
 			const newItemState = itemReducer(state[id], action, id);
 			if (newItemState) {
