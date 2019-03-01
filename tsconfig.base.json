@@ -1,3 +1,6 @@
 {
-	"extends": "tsconfig-collaborne"
+	"extends": "tsconfig-collaborne",
+	"compilerOptions": {
+		"declaration": true
+	}
 }
