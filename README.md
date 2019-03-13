@@ -18,9 +18,9 @@ const { byId } = require('redux-byid');
 function itemReducer(state, action) {
     switch (action.type) {
         case 'item/added':
-            return {id: action.id, data: action.data};
+            return {id: action.item_id, data: action.data};
         case 'item/updated':
-            return {id: action.id, data: action.updated};
+            return {id: action.item_id, data: action.updated};
         case 'item/deleted':
             // Item is deleted, return undefined. byId will drop out the state.
             return undefined;
@@ -30,23 +30,9 @@ function itemReducer(state, action) {
 }
 
 /**
- * Extract the item id for this reducer
- */
-function extractId(action) {
-    const isActionForItem = action.type.startsWith('item/');
-    if (!isActionForItem) {
-        // Not relevant, return undefined (alternatively an empty id)
-        // The itemReducer will not be invoked.
-        return undefined;
-    }
-
-    return action.id;
-}
-
-/**
  * Actual reducer, produces a map of item id -> item reducer.
  */
-const reducer = byId(extractId, itemReducer);
+const reducer = byId(action => action.item_id, itemReducer);
 ```
 
 ## License
