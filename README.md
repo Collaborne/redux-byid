@@ -2,6 +2,8 @@
 
 A helper for redux that allows to distribute an action to one specific part of a map of similar "things".
 
+This [blog post](https://medium.com/collaborne-engineering/redux-pattern-byid-reducers-323a863fa64e?source=friends_link&sk=e48bad30e5d950abf98f366c001f03aa) details the background of this library.
+
 ## Usage
 
 ```sh
