@@ -47,4 +47,13 @@ describe('redux-byid', () => {
 			expect(store.getState()).to.not.have.property('item1');
 		});
 	});
+
+	describe('values', () => {
+		it('retains boolean "false"', () => {
+			const booleanReducer = byId(action => action.id,
+				(state, action) => action.type === 'set-boolean' ? action.data : state);
+			const state = booleanReducer({}, {type: 'set-boolean', id: 'item', data: false});
+			expect(state).to.have.property('item', false);
+		});
+	});
 });

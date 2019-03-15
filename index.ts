@@ -12,7 +12,7 @@ export function byId<T>(getId: GetId<T>, itemReducer: ItemReducer<T>) {
 		const id = getId(action, state);
 		if (id) {
 			const newItemState = itemReducer(state[id], action, id);
-			if (newItemState) {
+			if (newItemState !== undefined) {
 				return Object.assign({}, state, {
 					[id]: newItemState,
 				});
