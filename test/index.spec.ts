@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { AnyAction, Store, createStore } from 'redux';
+import { AnyAction, createStore, Store } from 'redux';
 
 import { byId } from '..';
 
