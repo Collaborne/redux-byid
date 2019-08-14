@@ -11,15 +11,12 @@ export function byId<T>(getId: GetId<T>, itemReducer: ItemReducer<T>) {
 	return function reducer(state: State<T> = {}, action: AnyAction) {
 		const id = getId(action, state);
 		if (id) {
-			const newItemState = itemReducer(state[id], action, id);
+			const {[id]: itemState, ...newState} = state;
+			const newItemState = itemReducer(itemState, action, id);
 			if (newItemState !== undefined) {
-				return Object.assign({}, state, {
-					[id]: newItemState,
-				});
-			} else {
-				const {[id]: itemState, ...stateWithoutItemState} = state;
-				return stateWithoutItemState;
+				newState[id] = newItemState;
 			}
+			return newState;
 		}
 
 		return state;
