@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc && tsc -p tsconfig.es6.json",
     "lint": "tslint -p . -c tslint.json *.ts",
-    "test": "TS_NODE_FILES=true mocha --recursive -r ts-node/register \"test/**/*.spec.ts\""
+    "test": "env TS_NODE_CACHE=false TS_NODE_FILES=true $(npm bin)/nyc mocha"
   },
   "repository": {
     "type": "git",
@@ -25,10 +25,11 @@
   },
   "homepage": "https://github.com/Collaborne/redux-byid#readme",
   "devDependencies": {
-    "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.5",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0",
+    "mocha": "^7.2.0",
+    "nyc": "^15.1.0",
     "redux": "^4.0.1",
     "ts-node": "^7.0.1",
     "tsconfig-collaborne": "^1.1.0",
@@ -45,5 +46,28 @@
     "tsconfig*.json",
     "dist",
     "dist.es6"
-  ]
+  ],
+  "mocha": {
+    "extension": [
+      "ts"
+    ],
+    "spec": "test/**/*.spec.ts",
+    "recursive": true,
+    "require": [
+      "ts-node/register",
+      "source-map-support/register"
+    ],
+    "interface": "bdd"
+  },
+  "nyc": {
+    "exclude": [
+      "**/*.d.ts",
+      "dist/",
+      "dist.*/",
+      "test/",
+      "reports/",
+      "stryker.conf.js"
+    ],
+    "all": true
+  }
 }
