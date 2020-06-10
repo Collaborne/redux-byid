@@ -28,6 +28,6 @@ export function byId<T>(getId: GetId<T>, itemReducer: ItemReducer<T>) {
  *
  * @param itemReducers the reducers to compose
  */
-export function compose<T>(...itemReducers: Array<ItemReducer<T>>): ItemReducer<T> {
+export function compose<T>(...itemReducers: ItemReducer<T>[]): ItemReducer<T> {
 	return (state, action, id) => itemReducers.reduce((agg, reducer) => reducer(agg, action, id), state);
 }
