@@ -16,6 +16,7 @@ function itemReducer(state: ItemState|undefined, action: AnyAction): ItemState|u
 		return {id: action.id, data: action.updated};
 	case 'item/deleted':
 		return undefined;
+	case 'item/noop':
 	default:
 		return state;
 	}
@@ -45,6 +46,13 @@ describe('redux-byid', () => {
 			expect(store.getState()).to.have.property('item1');
 			store.dispatch({type: 'item/deleted', id: 'item1'});
 			expect(store.getState()).to.not.have.property('item1');
+		});
+		it('leaves state unchanged for unchanged item state', () => {
+			store.dispatch({type: 'item/added', id: 'item1', data: 'foo'});
+			const stateBefore = store.getState();
+			store.dispatch({type: 'item/noop', id: 'item1'});
+			const stateAfter = store.getState();
+			expect(stateBefore).to.be.equal(stateAfter);
 		});
 	});
 

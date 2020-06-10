@@ -13,6 +13,12 @@ export function byId<T>(getId: GetId<T>, itemReducer: ItemReducer<T>) {
 		if (id) {
 			const {[id]: itemState, ...newState} = state;
 			const newItemState = itemReducer(itemState, action, id);
+			if (newItemState === itemState) {
+				// Nothing has changed, return the original state
+				return state;
+			}
+
+			// Something has changed, we need the new state.
 			if (newItemState !== undefined) {
 				newState[id] = newItemState;
 			}
