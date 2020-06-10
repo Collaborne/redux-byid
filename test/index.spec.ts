@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { AnyAction, createStore, Store } from 'redux';
 
-import { byId } from '..';
+import { byId } from '../index';
 
 interface ItemState {
 	id: string;
